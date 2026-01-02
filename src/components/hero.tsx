@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Github, Mail } from "lucide-react"
 
 import { Button } from "./ui/button"
 
@@ -8,9 +8,15 @@ type HeroProps = {
 }
 
 export function Hero({ onViewProjects, onContact }: HeroProps) {
-
   const handleGithubClick = () => {
     window.open("https://github.com/verlnn", "_blank", "noopener,noreferrer")
+  }
+  const handleWantedClick = () => {
+    window.open(
+      "https://social.wanted.co.kr/community/profile/cVvsuEETpRbX7pQs83s6xr?utm_source=wanted&utm_medium=share",
+      "_blank",
+      "noopener,noreferrer",
+    )
   }
 
   return (
@@ -51,8 +57,18 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
           >
             <Github className="w-5 h-5" />
           </Button>
-          <Button size="icon" variant="ghost" className="rounded-full">
-            <Linkedin className="w-5 h-5" />
+          <Button
+            size="icon"
+            variant="ghost"
+            className="rounded-full"
+            aria-label="Wanted"
+            onClick={handleWantedClick}
+          >
+            <img
+              src="/wanted_logo.png"
+              alt="Wanted"
+              className="w-5 h-5 object-contain"
+            />
           </Button>
           <Button size="icon" variant="ghost" className="rounded-full">
             <Mail className="w-5 h-5" />

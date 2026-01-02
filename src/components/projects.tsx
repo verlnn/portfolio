@@ -1,7 +1,16 @@
-import { forwardRef, type ReactNode } from "react"
+import { forwardRef, useState, type ReactNode } from "react"
 
 import { ExternalLink, Github } from "lucide-react"
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "./ui/alert-dialog"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
@@ -42,7 +51,6 @@ const projects: Project[] = [
       client: "https://github.com/verlnn/HankiPick-client",
       server: "https://github.com/verlnn/HankiPick-server",
     },
-    demo: "#",
   },
   {
     title: "Food Wallet",
@@ -53,7 +61,6 @@ const projects: Project[] = [
       client: "https://github.com/verlnn/FoodWallet-Client",
       server: "https://github.com/verlnn/FoodWallet-Server",
     },
-    demo: "#",
   },
 ]
 
@@ -64,6 +71,8 @@ type RepoButton = {
 }
 
 function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }) {
+  const [isDemoAlertOpen, setIsDemoAlertOpen] = useState(false)
+
   const repoButtons: RepoButton[] = []
 
   const addRepoButton = (label: string, href?: string) => {
@@ -73,6 +82,11 @@ function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }
       href,
       icon: <Github className="w-4 h-4" />,
     })
+  }
+
+  const handleDemoBtnClick = (demoLink: string | undefined) => {
+    if (isDemoAlertOpen) window.open(demoLink, '_blank');
+    else setIsDemoAlertOpen(true);
   }
 
   if (typeof github === "string" && github) {
@@ -86,31 +100,49 @@ function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }
   if (!hasActions) return null
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {repoButtons.map((button) => (
-        <Button
-          key={button.label}
-          size="sm"
-          variant="outline"
-          className="flex-1 gap-2 bg-transparent"
-          asChild
-        >
-          <a href={button.href} target="_blank" rel="noreferrer">
-            {button.icon}
-            {button.label}
-          </a>
-        </Button>
-      ))}
+    <>
+      <div className="flex flex-wrap gap-2">
+        {repoButtons.map((button) => (
+          <Button
+            key={button.label}
+            size="sm"
+            variant="outline"
+            className="flex-1 gap-2 bg-transparent"
+            asChild
+          >
+            <a href={button.href} target="_blank" rel="noreferrer">
+              {button.icon}
+              {button.label}
+            </a>
+          </Button>
+        ))}
 
-      {demo && (
-        <Button size="sm" className="flex-1 gap-2" asChild>
-          <a href={demo} target="_blank" rel="noreferrer">
-            <ExternalLink className="w-4 h-4" />
-            Demo
-          </a>
-        </Button>
-      )}
-    </div>
+          <Button
+              size="sm"
+              className="flex-1 gap-2"
+              onClick={() => handleDemoBtnClick(demo)}
+          >
+              <ExternalLink className="w-4 h-4" />
+              Demo
+          </Button>
+      </div>
+
+      <AlertDialog open={isDemoAlertOpen} onOpenChange={setIsDemoAlertOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>데모 준비 중</AlertDialogTitle>
+            <AlertDialogDescription>
+              아직 데모 버전이 제공되지 않습니다. 곧 업데이트될 예정이에요.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={() => setIsDemoAlertOpen(false)}>
+              확인
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   )
 }
 

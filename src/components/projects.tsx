@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import { forwardRef, type ReactNode } from "react"
 
 import { ExternalLink, Github } from "lucide-react"
 
@@ -8,7 +8,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 
 type ProjectsProps = React.ComponentPropsWithoutRef<"section">
 
-const projects = [
+type GithubLink =
+  | string
+  | {
+      client?: string
+      server?: string
+    }
+
+type Project = {
+  title: string
+  description: string
+  image?: string
+  tags: string[]
+  github?: GithubLink
+  demo?: string
+}
+
+const projects: Project[] = [
   {
     title: "E-Commerce Platform",
     description: "대규모 이커머스 플랫폼 프론트엔드 개발. 사용자 경험 최적화 및 성능 개선에 집중했습니다.",
@@ -18,22 +34,85 @@ const projects = [
     demo: "#",
   },
   {
-    title: "Task Management App",
-    description: "팀 협업을 위한 태스크 관리 애플리케이션. 실시간 동기화와 알림 기능을 구현했습니다.",
-    image: "/logo.png",
-    tags: ["React", "Firebase", "Material-UI"],
-    github: "#",
+    title: "한끼픽",
+    description: "메뉴 추천 서비스 앱 개발. 사용자 기반 알고리즘을 통하여 후회없는 메뉴를 추천합니다.",
+    image: "/HankiPickLogo.png",
+    tags: ["Flutter", "Dart", "Firebase", "FastAPI", "Python", "JWT", "PostgreSQL"],
+    github: {
+      client: "#",
+      server: "#",
+    },
     demo: "#",
   },
   {
-    title: "Portfolio CMS",
-    description: "개발자를 위한 포트폴리오 CMS. 다크모드와 반응형 디자인을 지원합니다.",
-    image: "/logo.png",
-    tags: ["Next.js", "Supabase", "TailwindCSS"],
-    github: "#",
+    title: "Food Wallet",
+    description: "다양한 식이 제한을 가진 사용자들이 안전하게 식품을 선택할 수 있도록 돕는 모바일 앱입니다.",
+    image: "/FoodWalletLogo.png",
+    tags: ["Flutter", "Dart", "Firebase", "Python", "chat 40 mini", "OCR", "PostgreSQL"],
+    github: {
+      client: "#",
+      server: "#",
+    },
     demo: "#",
   },
 ]
+
+type RepoButton = {
+  label: string
+  href: string
+  icon: ReactNode
+}
+
+function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }) {
+  const repoButtons: RepoButton[] = []
+
+  const addRepoButton = (label: string, href?: string) => {
+    if (!href) return
+    repoButtons.push({
+      label,
+      href,
+      icon: <Github className="w-4 h-4" />,
+    })
+  }
+
+  if (typeof github === "string" && github) {
+    addRepoButton("Code", github)
+  } else if (github && typeof github === "object") {
+    addRepoButton("Client", github.client)
+    addRepoButton("Server", github.server)
+  }
+
+  const hasActions = repoButtons.length > 0 || !!demo
+  if (!hasActions) return null
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {repoButtons.map((button) => (
+        <Button
+          key={button.label}
+          size="sm"
+          variant="outline"
+          className="flex-1 gap-2 bg-transparent"
+          asChild
+        >
+          <a href={button.href} target="_blank" rel="noreferrer">
+            {button.icon}
+            {button.label}
+          </a>
+        </Button>
+      ))}
+
+      {demo && (
+        <Button size="sm" className="flex-1 gap-2" asChild>
+          <a href={demo} target="_blank" rel="noreferrer">
+            <ExternalLink className="w-4 h-4" />
+            Demo
+          </a>
+        </Button>
+      )}
+    </div>
+  )
+}
 
 export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...props }, ref) => {
   return (
@@ -72,16 +151,7 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
                   ))}
                 </div>
 
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" className="flex-1 gap-2 bg-transparent">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </Button>
-                  <Button size="sm" className="flex-1 gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Demo
-                  </Button>
-                </div>
+                <ProjectActions github={project.github} demo={project.demo} />
               </CardContent>
             </Card>
           ))}

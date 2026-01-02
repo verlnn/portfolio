@@ -1,5 +1,17 @@
+import { useState } from "react"
 import { ArrowDown, Github, Mail } from "lucide-react"
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog"
 import { Button } from "./ui/button"
 
 type HeroProps = {
@@ -8,6 +20,8 @@ type HeroProps = {
 }
 
 export function Hero({ onViewProjects, onContact }: HeroProps) {
+  const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false)
+
   const handleGithubClick = () => {
     window.open("https://github.com/verlnn", "_blank", "noopener,noreferrer")
   }
@@ -17,6 +31,15 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
       "_blank",
       "noopener,noreferrer",
     )
+  }
+  const handleResumeDownload = () => {
+    const link = document.createElement("a")
+    link.href = "/resume.pdf"
+    link.download = "resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    setIsResumeDialogOpen(false)
   }
 
   return (
@@ -70,9 +93,39 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
               className="w-5 h-5 object-contain"
             />
           </Button>
-          <Button size="icon" variant="ghost" className="rounded-full">
-            <Mail className="w-5 h-5" />
-          </Button>
+          <AlertDialog
+            open={isResumeDialogOpen}
+            onOpenChange={setIsResumeDialogOpen}
+          >
+            <AlertDialogTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="rounded-full"
+                aria-label="Resume"
+              >
+                <img
+                  src="/pdf.png"
+                  alt="PDF 다운로드"
+                  className="w-5 h-5 object-contain"
+                />
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>이력서 다운로드</AlertDialogTitle>
+                <AlertDialogDescription>
+                  김민수님의 이력서를 PDF로 다운로드 하시겠습니까?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>취소</AlertDialogCancel>
+                <AlertDialogAction onClick={handleResumeDownload}>
+                  다운로드
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </section>

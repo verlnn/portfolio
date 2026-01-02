@@ -14,7 +14,7 @@ const experiences = [
     title: "병역특례",
     company: "Army",
     description: "병역특례 제도를 이용하여 군전역 마쳤습니다.",
-    tags: [],
+    tags: ["산업기능요원", "병역특례"],
   },
 ]
 

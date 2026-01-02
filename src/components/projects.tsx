@@ -2,18 +2,10 @@ import { forwardRef, useState, type ReactNode } from "react"
 
 import { ExternalLink, Github } from "lucide-react"
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "./ui/alert-dialog"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { MissingResourceDialog } from "./project-alert"
 
 type ProjectsProps = React.ComponentPropsWithoutRef<"section">
 
@@ -47,7 +39,7 @@ const projects: Project[] = [
     description: "UniHub, UniShift 솔루션을 하나의 계정으로 이용할 수 있도록 만든 통합 인증(SSO) 및 권한 관리 플랫폼입니다",
     image: "/UniPassLogo.jpeg",
     tags: ["Java", "Spring Boot", "Spring Security", "JWT", "React", "TypeScript"],
-    github: "#",
+    github: "https://github.com/UniSuit/UniPass",
     demo: "#",
   },
   {
@@ -92,36 +84,47 @@ type RepoButton = {
   label: string
   href: string
   icon: ReactNode
+  available: boolean
 }
 
 function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }) {
-  const [isDemoAlertOpen, setIsDemoAlertOpen] = useState(false)
+  const [missingTarget, setMissingTarget] = useState<"demo" | "code" | null>(null)
 
   const repoButtons: RepoButton[] = []
 
   const addRepoButton = (label: string, href?: string) => {
-    if (!href) return
+    if (!href) {
+      repoButtons.push({
+        label,
+        href: "",
+        icon: <Github className="w-4 h-4" />,
+        available: false,
+      })
+      return
+    }
+
+    const available = href !== "#" && href.trim().length > 0
     repoButtons.push({
       label,
       href,
       icon: <Github className="w-4 h-4" />,
+      available,
     })
   }
 
-  const handleDemoBtnClick = (demoLink: string | undefined) => {
-    if (isDemoAlertOpen) window.open(demoLink, '_blank');
-    else setIsDemoAlertOpen(true);
-  }
-
-  if (typeof github === "string" && github) {
+  if (typeof github === "string") {
     addRepoButton("Code", github)
   } else if (github && typeof github === "object") {
     addRepoButton("Client", github.client)
     addRepoButton("Server", github.server)
+  } else {
+    addRepoButton("Code")
   }
 
   const hasActions = repoButtons.length > 0 || !!demo
   if (!hasActions) return null
+
+  const isDemoAvailable = !!demo && demo !== "#"
 
   return (
     <>
@@ -132,40 +135,56 @@ function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }
             size="sm"
             variant="outline"
             className="flex-1 gap-2 bg-transparent"
-            asChild
+            asChild={button.available}
+            onClick={
+              button.available ? undefined : () => setMissingTarget("code")
+            }
           >
-            <a href={button.href} target="_blank" rel="noreferrer">
-              {button.icon}
-              {button.label}
-            </a>
+            {button.available ? (
+              <a href={button.href} target="_blank" rel="noreferrer">
+                {button.icon}
+                {button.label}
+              </a>
+            ) : (
+              <>
+                {button.icon}
+                {button.label}
+              </>
+            )}
           </Button>
         ))}
 
-          <Button
-              size="sm"
-              className="flex-1 gap-2"
-              onClick={() => handleDemoBtnClick(demo)}
-          >
+        {isDemoAvailable ? (
+          <Button size="sm" className="flex-1 gap-2" asChild>
+            <a href={demo} target="_blank" rel="noreferrer">
               <ExternalLink className="w-4 h-4" />
               Demo
+            </a>
           </Button>
+        ) : (
+          <Button
+            size="sm"
+            className="flex-1 gap-2"
+            onClick={() => setMissingTarget("demo")}
+          >
+            <ExternalLink className="w-4 h-4" />
+            Demo
+          </Button>
+        )}
       </div>
 
-      <AlertDialog open={isDemoAlertOpen} onOpenChange={setIsDemoAlertOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>데모 준비 중</AlertDialogTitle>
-            <AlertDialogDescription>
-              아직 데모 버전이 제공되지 않습니다. 곧 업데이트될 예정이에요.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setIsDemoAlertOpen(false)}>
-              확인
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <MissingResourceDialog
+        open={missingTarget !== null}
+        onOpenChange={(open) => setMissingTarget(open ? missingTarget : null)}
+        title={
+          missingTarget === "code" ? "코드 저장소 준비 중" : "데모 준비 중"
+        }
+        description={
+          missingTarget === "code"
+            ? "아직 GitHub 저장소 링크가 준비되지 않았습니다. 곧 업데이트될 예정이에요."
+            : "아직 데모 버전이 제공되지 않습니다. 곧 업데이트될 예정이에요."
+        }
+      />
     </>
   )
 }
@@ -184,7 +203,7 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
               key={index}
               className="overflow-hidden hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5"
             >
-              <div className="relative h-70 bg-muted">
+              <div className="relative h-60 bg-muted">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}

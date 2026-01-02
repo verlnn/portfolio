@@ -3,6 +3,13 @@ import { Card } from "./ui/card"
 
 const experiences = [
   {
+    period: "2025 - ",
+    title: "대학교",
+    company: "한성대학교",
+    description: "선취업 후진학 제도를 이용하여 주경야독하고 있습니다.",
+    tags: ["선취업 후진학"],
+  },
+  {
     period: "2021 - ",
     title: "백앤드 개발자",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",

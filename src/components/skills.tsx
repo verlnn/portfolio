@@ -4,16 +4,20 @@ import { Card } from "./ui/card"
 const skillCategories = [
   {
     category: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Redux", "Vue.js"],
+    skills: ["React", "TypeScript", "Angular", "css", "JavaScript", "Material UI", "DevExtreme"],
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Express", "Python", "Django", "PostgreSQL", "MongoDB", "REST API", "GraphQL"],
+    skills: ["Java", "Elastic Search", "Nginx", "JPA", "Spring", "SpringBoot", "SpringSecurity", "PostgreSQL", "Oracle", "MySQL", "MSSQL", "VERTICA"],
   },
   {
     category: "Tools & Others",
-    skills: ["Git", "Docker", "AWS", "Vercel", "Figma", "Jest", "CI/CD", "Agile"],
+    skills: ["Git", "Docker", "Linux", "Tableau", "Cursor AI", "V0", "NotebookLM", "Google AI Studio", "Codex", "Spline"],
   },
+  {
+    category: "Currently Exploring",
+    skills: ["Python", "Flutter", "Dart", "Kafka"],
+  }
 ]
 
 export function Skills() {

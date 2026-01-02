@@ -8,6 +8,11 @@ type HeroProps = {
 }
 
 export function Hero({ onViewProjects, onContact }: HeroProps) {
+
+  const handleGithubClick = () => {
+    window.open("https://github.com/verlnn", "_blank", "noopener,noreferrer")
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
@@ -37,7 +42,13 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
         </div>
 
         <div className="flex items-center justify-center gap-4 pt-8">
-          <Button size="icon" variant="ghost" className="rounded-full">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="rounded-full"
+            aria-label="GitHub"
+            onClick={handleGithubClick}
+          >
             <Github className="w-5 h-5" />
           </Button>
           <Button size="icon" variant="ghost" className="rounded-full">

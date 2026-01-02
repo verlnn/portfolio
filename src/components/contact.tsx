@@ -1,16 +1,32 @@
 "use client"
 
+"use client"
+
 import type React from "react"
 
-import { useState } from "react"
+import { forwardRef, useState } from "react"
+import { Mail, MapPin, Phone } from "lucide-react"
+
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
-import { Mail, MapPin, Phone } from "lucide-react"
 
-export function Contact() {
-  const [formData, setFormData] = useState({
+type ContactFormData = {
+  name: string
+  email: string
+  message: string
+}
+
+type ContactProps = React.ComponentPropsWithoutRef<"section"> & {
+  email?: string
+}
+
+export const Contact = forwardRef<HTMLElement, ContactProps>(function Contact(
+  { email = "contact@example.com", className, ...props },
+  ref,
+) {
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     message: "",
@@ -18,12 +34,14 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    const subject = `[Portfolio] ${formData.name || "문의"}`
+    const body = `이름: ${formData.name}\n이메일: ${formData.email}\n\n${formData.message}`
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = mailto
   }
 
   return (
-    <section className="py-20 px-4">
+    <section ref={ref} id="contact" className="py-20 px-4" {...props}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           <span className="text-primary">Get</span> In Touch
@@ -40,7 +58,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-muted-foreground">contact@example.com</p>
+                  <p className="text-muted-foreground">{email}</p>
                 </div>
               </div>
 
@@ -108,4 +126,4 @@ export function Contact() {
       </div>
     </section>
   )
-}
+})

@@ -4,9 +4,10 @@ import { Button } from "./ui/button"
 
 type HeroProps = {
   onViewProjects?: () => void
+  onContact?: () => void
 }
 
-export function Hero({ onViewProjects }: HeroProps) {
+export function Hero({ onViewProjects, onContact }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
@@ -25,7 +26,7 @@ export function Hero({ onViewProjects }: HeroProps) {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2" onClick={onContact}>
             <Mail className="w-5 h-5" />
             연락하기
           </Button>

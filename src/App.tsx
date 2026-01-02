@@ -12,19 +12,24 @@ import { Skills } from "./components/skills"
 
 function App() {
   const projectsRef = useRef<HTMLElement | null>(null)
+  const contactRef = useRef<HTMLElement | null>(null)
 
   const handleViewProjects = () => {
     projectsRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
+  const handleContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Hero onViewProjects={handleViewProjects} />
+      <Hero onViewProjects={handleViewProjects} onContact={handleContact} />
       <About />
       <Experience />
       <Projects ref={projectsRef} />
       <Skills />
-      <Contact />
+      <Contact ref={contactRef} />
     </main>
   )
 }

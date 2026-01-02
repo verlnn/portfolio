@@ -3,25 +3,18 @@ import { Card } from "./ui/card"
 
 const experiences = [
   {
-    period: "2023 - 현재",
-    title: "시니어 프론트엔드 개발자",
-    company: "Tech Company",
-    description: "React와 Next.js를 활용한 대규모 웹 애플리케이션 개발 및 아키텍처 설계를 담당하고 있습니다.",
-    tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
+    period: "2021 - ",
+    title: "백앤드 개발자",
+    company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
+    description: "백앤드, 프론트앤드, DB작업을 같이 병행하며 여러 병원들에서 주 솔루션들을 담당하였으며 운영 및 개발을 맡았습니다.",
+    tags: ["Java", "Spring Boot", "React", "Angular", "TypeScript", "Linux", "Nginx", "VERTICA", "PostgreSQL", "Etc..."],
   },
   {
-    period: "2021 - 2023",
-    title: "프론트엔드 개발자",
-    company: "Startup Inc.",
-    description: "스타트업에서 다양한 프로젝트를 진행하며 풀스택 개발 경험을 쌓았습니다.",
-    tags: ["Vue.js", "Node.js", "MongoDB", "AWS"],
-  },
-  {
-    period: "2019 - 2021",
-    title: "주니어 개발자",
-    company: "Digital Agency",
-    description: "웹사이트 및 웹 애플리케이션 제작에 참여하며 개발 기초를 다졌습니다.",
-    tags: ["HTML", "CSS", "JavaScript", "jQuery"],
+    period: "2022 - 2025",
+    title: "병역특례",
+    company: "Army",
+    description: "병역특례 제도를 이용하여 군전역 마쳤습니다.",
+    tags: [],
   },
 ]
 

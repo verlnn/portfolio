@@ -12,7 +12,7 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description: "대규모 이커머스 플랫폼 프론트엔드 개발. 사용자 경험 최적화 및 성능 개선에 집중했습니다.",
-    image: "/ecommerce-platform-interface.png",
+    image: "/logo.png",
     tags: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
     github: "#",
     demo: "#",
@@ -20,7 +20,7 @@ const projects = [
   {
     title: "Task Management App",
     description: "팀 협업을 위한 태스크 관리 애플리케이션. 실시간 동기화와 알림 기능을 구현했습니다.",
-    image: "/task-management-dashboard.png",
+    image: "/logo.png",
     tags: ["React", "Firebase", "Material-UI"],
     github: "#",
     demo: "#",
@@ -28,7 +28,7 @@ const projects = [
   {
     title: "Portfolio CMS",
     description: "개발자를 위한 포트폴리오 CMS. 다크모드와 반응형 디자인을 지원합니다.",
-    image: "/portfolio-cms-editor.jpg",
+    image: "/logo.png",
     tags: ["Next.js", "Supabase", "TailwindCSS"],
     github: "#",
     demo: "#",

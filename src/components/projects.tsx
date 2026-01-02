@@ -160,7 +160,7 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
               key={index}
               className="overflow-hidden hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5"
             >
-              <div className="relative h-48 bg-muted">
+              <div className="relative h-70 bg-muted">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}

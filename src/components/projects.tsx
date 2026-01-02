@@ -1,7 +1,12 @@
+import { forwardRef } from "react"
+
+import { ExternalLink, Github } from "lucide-react"
+
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { ExternalLink, Github } from "lucide-react"
+
+type ProjectsProps = React.ComponentPropsWithoutRef<"section">
 
 const projects = [
   {
@@ -30,9 +35,9 @@ const projects = [
   },
 ]
 
-export function Projects() {
+export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...props }, ref) => {
   return (
-    <section className="py-20 px-4">
+    <section ref={ref} id="projects" className="py-20 px-4" {...props}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           <span className="text-primary">Featured</span> Projects
@@ -84,4 +89,4 @@ export function Projects() {
       </div>
     </section>
   )
-}
+})

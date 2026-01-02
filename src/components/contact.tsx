@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { Button } from "./ui/button"
+import { Card } from "./ui/card"
+import { Input } from "./ui/input"
+import { Textarea } from "./ui/textarea"
 import { Mail, MapPin, Phone } from "lucide-react"
 
 export function Contact() {

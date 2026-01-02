@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react"
 
 export function Hero() {

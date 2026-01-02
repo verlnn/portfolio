@@ -153,11 +153,6 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
       icon: <img src="/wanted_logo.png" alt="Wanted" className="w-5 h-5 object-contain" />,
       onClick: handleWantedClick,
     },
-    {
-      label: "Mail",
-      icon: <Mail className="w-5 h-5" />,
-      onClick: handleMailClick,
-    },
   ]
 
   return (

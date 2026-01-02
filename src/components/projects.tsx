@@ -39,8 +39,8 @@ const projects: Project[] = [
     image: "/HankiPickLogo.png",
     tags: ["Flutter", "Dart", "Firebase", "FastAPI", "Python", "JWT", "PostgreSQL"],
     github: {
-      client: "#",
-      server: "#",
+      client: "https://github.com/verlnn/HankiPick-client",
+      server: "https://github.com/verlnn/HankiPick-server",
     },
     demo: "#",
   },
@@ -50,8 +50,8 @@ const projects: Project[] = [
     image: "/FoodWalletLogo.png",
     tags: ["Flutter", "Dart", "Firebase", "Python", "chat 40 mini", "OCR", "PostgreSQL"],
     github: {
-      client: "#",
-      server: "#",
+      client: "https://github.com/verlnn/FoodWallet-Client",
+      server: "https://github.com/verlnn/FoodWallet-Server",
     },
     demo: "#",
   },

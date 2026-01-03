@@ -27,14 +27,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "대규모 이커머스 플랫폼 프론트엔드 개발. 사용자 경험 최적화 및 성능 개선에 집중했습니다.",
-    image: "/logo.png",
-    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
-    github: "#",
-    demo: "#",
-  },
-  {
     title: "UniPass",
     description: "UniHub, UniShift 솔루션을 하나의 계정으로 이용할 수 있도록 만든 통합 인증(SSO) 및 권한 관리 플랫폼입니다",
     image: "/UniPassLogo.jpeg",

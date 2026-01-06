@@ -96,6 +96,7 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
     <section
       ref={ref}
       id="company-projects"
+      data-pdf-section="true"
       className="py-16 px-4 bg-muted/30 scroll-mt-24"
       {...props}
     >

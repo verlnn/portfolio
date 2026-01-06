@@ -153,11 +153,19 @@
 
   main {
     margin-top: var(--print-header-offset);
+    display: block;
   }
 
-  main > [data-pdf-section="true"] {
+  section[data-pdf-section="true"] {
     break-inside: avoid;
     page-break-inside: avoid;
+    break-before: page;
+    page-break-before: always;
+  }
+
+  section[data-pdf-section="true"]:first-of-type {
+    break-before: auto;
+    page-break-before: auto;
   }
 
   [data-pdf-page-break="before"] {

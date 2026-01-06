@@ -183,7 +183,13 @@ function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }
 
 export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...props }, ref) => {
   return (
-    <section ref={ref} id="projects" className="py-20 px-4 scroll-mt-24" {...props}>
+    <section
+      ref={ref}
+      id="projects"
+      data-pdf-section="true"
+      className="py-20 px-4 scroll-mt-24"
+      {...props}
+    >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           <span className="text-primary">Featured</span> Projects

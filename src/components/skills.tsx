@@ -22,7 +22,7 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-4 bg-muted/30 scroll-mt-24">
+    <section id="skills" data-pdf-section="true" className="py-20 px-4 bg-muted/30 scroll-mt-24">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           <span className="text-primary">Skills</span> & Technologies

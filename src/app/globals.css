@@ -134,7 +134,7 @@
   }
 
   :root {
-    --print-header-offset: 72px;
+    --print-header-offset: 88px;
   }
 
   body {
@@ -148,6 +148,7 @@
     top: 0;
     left: 0;
     right: 0;
+    background: var(--color-background);
   }
 
   main {

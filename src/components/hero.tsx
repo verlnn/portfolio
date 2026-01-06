@@ -23,7 +23,7 @@ type HeroProps = {
 type SocialButtonConfig = {
   label: string
   icon: ReactNode
-  onClick: () => void
+  href: string
 }
 
 function HeroHeader() {
@@ -49,24 +49,22 @@ function PrimaryActions({
 }: Required<Pick<HeroProps, "onContact" | "onViewProjects">>) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
-      <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={onViewProjects}>
-        실무 프로젝트 보기
-        <ArrowDown className="w-5 h-5" />
+      <Button size="lg" variant="outline" className="gap-2 bg-transparent" asChild>
+        <a href="#company-projects" onClick={onViewProjects}>
+          실무 프로젝트 보기
+          <ArrowDown className="w-5 h-5" />
+        </a>
       </Button>
     </div>
   )
 }
 
-function SocialButton({ label, icon, onClick }: SocialButtonConfig) {
+function SocialButton({ label, icon, href }: SocialButtonConfig) {
   return (
-    <Button
-      size="icon"
-      variant="ghost"
-      className="rounded-full"
-      aria-label={label}
-      onClick={onClick}
-    >
-      {icon}
+    <Button size="icon" variant="ghost" className="rounded-full" aria-label={label} asChild>
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {icon}
+      </a>
     </Button>
   )
 }
@@ -76,29 +74,16 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
   const safeOnViewProjects = onViewProjects ?? (() => {})
   const safeOnContact = onContact ?? (() => {})
 
-  const handleGithubClick = () => {
-    window.open("https://github.com/verlnn", "_blank", "noopener,noreferrer")
-  }
-
-  const handleWantedClick = () => {
-    window.open(
-      "https://social.wanted.co.kr/community/profile/cVvsuEETpRbX7pQs83s6xr?utm_source=wanted&utm_medium=share",
-      "_blank",
-      "noopener,noreferrer",
-    )
-  }
-
-
   const socialButtons: SocialButtonConfig[] = [
     {
       label: "GitHub",
       icon: <Github className="w-5 h-5" />,
-      onClick: handleGithubClick,
+      href: "https://github.com/verlnn",
     },
     {
       label: "Wanted",
       icon: <img src="/wanted_logo.png" alt="Wanted" className="w-5 h-5 object-contain" />,
-      onClick: handleWantedClick,
+      href: "https://social.wanted.co.kr/community/profile/cVvsuEETpRbX7pQs83s6xr?utm_source=wanted&utm_medium=share",
     },
   ]
 

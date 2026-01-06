@@ -29,7 +29,7 @@ export function Experience() {
   return (
     <section id="experience" className="py-20 px-4 bg-muted/30 scroll-mt-24">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
           <span className="text-primary">Experience</span>
         </h2>
 
@@ -49,7 +49,7 @@ export function Experience() {
 
                   <p className="text-foreground/80 leading-relaxed">{exp.description}</p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1">
                     {exp.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
                         {tag}

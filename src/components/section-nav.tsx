@@ -7,7 +7,6 @@ const sections = [
   { label: "Company", href: "#company-projects" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
 ]
 
 export function SectionNav() {

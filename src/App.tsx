@@ -23,7 +23,6 @@ function App() {
       <CompanyProjects ref={projectsRef} />
       <Projects />
       <Skills />
-      <Contact ref={contactRef} />
     </main>
   )
 }

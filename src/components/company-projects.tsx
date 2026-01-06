@@ -18,22 +18,25 @@ const companyProjects: CompanyProject[] = [
   {
     seq: 1,
     name: "서울대병원",
-    period: "2023 - 2024",
-    company: "PLANITSQUARE Inc.",
+    period: "2021 - ",
+    company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
-        "여러 병원 솔루션을 하나의 화면에서 연결하는 통합 포털. 사용자 권한과 메뉴 구성을 병원별로 커스터마이징 가능하게 설계.",
-    role: "백엔드 설계, 프론트 화면 개발, 운영 자동화",
+        "서울대병원 의료·연구 솔루션 통합 포털 구축 프로젝트",
+    role: "풀스택 개발 및 운영·협업까지 전 과정을 담당",
     highlights: [
-      "권한-메뉴 매핑 모델 정리로 신규 병원 도입 리드타임 단축",
-      "포털 초기 로딩 최적화로 첫 화면 렌더링 개선",
-      "운영 로그 표준화로 장애 탐지 속도 향상",
+      "연구검색 기능을 MSA 구조로 분리 설계하여 검색 및 권한·데이터 접근 로직을 독립 서비스로 구성",
+      "성능 병목을 Set 자료구조를 활용해 O(N×M)에서 O(N)으로 개선하여 브라우저 프리징 문제 해결",
+      "비정형 병리·건증 전문 데이터를 정형화하는 분석 파이프라인 운영",
+      "IBM Watson Discovery 기반 병리 파싱 로직을 정규식 기반 자체 파싱 엔진으로 대체하여 Hit율 97% 정확도 개선 및 CompletableFuture 활용한 병렬처리로 적재시간 개선",
+      "다기관 의료 데이터 환경에서 DW 기반 ETL 파이프라인을 설계·운영하며 대용량 임상 데이터 적재 및 품질 관리 수행",
+      "서울대병원을 포함한 다수의 상급종합병원·국립병원 환경에서 동일 솔루션을 전담 운영하며, 다기관 운영·관리 및 장애 대응을 책임진 프로젝트",
     ],
     metrics: [
       { label: "도입 병원", value: "12곳" },
       { label: "첫 화면", value: "1.8s" },
       { label: "운영 알림", value: "40%↑" },
     ],
-    stack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "Nginx"],
+    stack: ["Java", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
     status: "운영 중",
   },
 
@@ -42,7 +45,7 @@ const companyProjects: CompanyProject[] = [
     seq: 2,
     name: "MediGate 통합 포털",
     period: "2023 - 2024",
-    company: "PLANITSQUARE Inc.",
+    company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
       "여러 병원 솔루션을 하나의 화면에서 연결하는 통합 포털. 사용자 권한과 메뉴 구성을 병원별로 커스터마이징 가능하게 설계.",
     role: "백엔드 설계, 프론트 화면 개발, 운영 자동화",
@@ -63,7 +66,7 @@ const companyProjects: CompanyProject[] = [
     seq: 3,
     name: "CareShift 근무/출퇴근",
     period: "2022 - 2023",
-    company: "PLANITSQUARE Inc.",
+    company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
       "근무 일정, 출퇴근 기록, 승인 흐름을 통합한 근태 관리 플랫폼. 병원별 근무 규칙을 설정 가능한 정책 엔진 구축.",
     role: "정책 엔진 구현, 스케줄 API, 배치 성능 개선",
@@ -84,7 +87,7 @@ const companyProjects: CompanyProject[] = [
     seq: 4,
     name: "Insight 검사 리포트",
     period: "2021 - 2022",
-    company: "PLANITSQUARE Inc.",
+    company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
       "검사 결과 리포트를 자동 생성하고 병원 업무 시스템과 연동. 의사/간호사별 필터링과 승인 워크플로우 제공.",
     role: "DB 모델링, 리포트 템플릿, 연동 API 유지보수",
@@ -111,10 +114,6 @@ export function CompanyProjects() {
           <h2 className="text-3xl md:text-5xl font-bold">
             <span className="text-primary">Company</span> Projects
           </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            회사에서 맡았던 프로젝트를 한눈에 정리한 목업입니다. 각 프로젝트의 역할과 임팩트를 빠르게
-            훑어볼 수 있도록 구성했습니다.
-          </p>
         </div>
 
         <div className="grid gap-4">

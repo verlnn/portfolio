@@ -1,3 +1,6 @@
+import type { ComponentPropsWithoutRef } from "react"
+import { forwardRef } from "react"
+
 import { Badge } from "./ui/badge"
 import { Card } from "./ui/card"
 
@@ -13,6 +16,8 @@ type CompanyProject = {
   stack: string[]
   status: string
 }
+
+type CompanyProjectsProps = ComponentPropsWithoutRef<"section">
 
 const companyProjects: CompanyProject[] = [
   {
@@ -86,9 +91,14 @@ const companyProjects: CompanyProject[] = [
   },
 ]
 
-export function CompanyProjects() {
+export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((props, ref) => {
   return (
-    <section id="company-projects" className="py-16 px-4 bg-muted/30 scroll-mt-24">
+    <section
+      ref={ref}
+      id="company-projects"
+      className="py-16 px-4 bg-muted/30 scroll-mt-24"
+      {...props}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 space-y-3">
           <h2 className="text-3xl md:text-5xl font-bold">
@@ -182,4 +192,4 @@ export function CompanyProjects() {
       </div>
     </section>
   )
-}
+})

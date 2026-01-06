@@ -52,7 +52,7 @@ function PrimaryActions({
         연락하기
       </Button>
       <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={onViewProjects}>
-        프로젝트 보기
+        실무 프로젝트 보기
         <ArrowDown className="w-5 h-5" />
       </Button>
     </div>

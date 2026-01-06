@@ -20,8 +20,8 @@ function App() {
       <Hero onViewProjects={scrollToProjects} onContact={scrollToContact} />
       <About />
       <Experience />
-      <CompanyProjects />
-      <Projects ref={projectsRef} />
+      <CompanyProjects ref={projectsRef} />
+      <Projects />
       <Skills />
       <Contact ref={contactRef} />
     </main>

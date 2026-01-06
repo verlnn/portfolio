@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react"
 import { ArrowDown, Github, Mail } from "lucide-react"
 
+import { HeroViewingLink } from "./hero-viewing-link"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,6 +32,7 @@ function HeroHeader() {
       <h1 className="text-5xl md:text-7xl font-bold text-balance">
         <span className="text-primary">김민수</span>
       </h1>
+      <HeroViewingLink />
       <p className="text-xl md:text-2xl text-muted-foreground text-balance">
         4년간의 실무 경험으로 검증된 풀스택 병역특례 개발자
       </p>

@@ -32,9 +32,9 @@ const companyProjects: CompanyProject[] = [
       "서울대병원을 포함한 다수의 상급종합병원·국립병원 환경에서 동일 솔루션을 전담 운영하며, 다기관 운영·관리 및 장애 대응을 책임진 프로젝트",
     ],
     metrics: [
-      { label: "다기관 병원", value: "12곳" },
+      { label: "다기관 병원", value: "12개" },
       { label: "대용량 임상 데이터", value: "DW·ETL" },
-      { label: "운영 알림", value: "전담 운영" },
+      { label: "운영·장애 대응", value: "전담 운영" },
     ],
     stack: ["Java", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "DevExtreme", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
     status: "운영 중",
@@ -45,18 +45,20 @@ const companyProjects: CompanyProject[] = [
     period: "2021 - ",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
-        "서울대병원 의료·연구 솔루션 통합 포털 구축 프로젝트",
+        "CDW 기반 임상 데이터 연구검색 시스템 개발 및 운영",
     role: "풀스택 개발 및 운영·협업까지 전 과정을 담당",
     highlights: [
-      "연구검색 기능을 MSA 구조로 분리 설계하여 검색 및 권한·데이터 접근 로직을 독립 서비스로 구성",
-        // angular로 되어있고 기존에 있던 사람들이 개발한 코드를 직접 추가 시간을 할애해서 파악하고 기존 코드와 유연하게 적용되도록 노력함.
+      "룩업 하드코딩 의존 구조를 DB 기반 자동 관리 구조로 전환하여, 재배포 없이 운영 가능한 룩업 자동 빌드 시스템 구축",
+      "현업 사용자와 1:1 다이렉트 협업 기반 실서비스 운영",
+      "9개 이상 병원을 동시에 전담 운영하며, 다기관 환경에서도 안정적인 서비스 운영과 신속한 장애 대응을 수행",
+      "웹 취약점 점검 항목을 기준으로 인증·권한·입력값 검증 등 보안 설정을 점검·보완하며 운영 환경의 보안 안정성 강화",
     ],
     metrics: [
-      { label: "다기관 병원", value: "12곳" },
-      { label: "대용량 임상 데이터", value: "DW·ETL" },
-      { label: "운영 알림", value: "전담 운영" },
+      { label: "다기관 병원", value: "9개" },
+      { label: "사용자 1:1 대응", value: "현업 직통" },
+      { label: "운영·장애 대응", value: "전담 운영" },
     ],
-    stack: ["Java", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
+    stack: ["Java", "Spring Boot", "Spring Security", "DevExtreme", "Angular", "TypeScript", "Oracle", "MsSQL", "Tomcat9"],
     status: "운영 중",
   },
   {

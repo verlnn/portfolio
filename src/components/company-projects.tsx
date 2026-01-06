@@ -2,6 +2,7 @@ import { Badge } from "./ui/badge"
 import { Card } from "./ui/card"
 
 type CompanyProject = {
+  seq: number
   name: string
   period: string
   company: string
@@ -15,6 +16,30 @@ type CompanyProject = {
 
 const companyProjects: CompanyProject[] = [
   {
+    seq: 1,
+    name: "서울대병원",
+    period: "2023 - 2024",
+    company: "PLANITSQUARE Inc.",
+    summary:
+        "여러 병원 솔루션을 하나의 화면에서 연결하는 통합 포털. 사용자 권한과 메뉴 구성을 병원별로 커스터마이징 가능하게 설계.",
+    role: "백엔드 설계, 프론트 화면 개발, 운영 자동화",
+    highlights: [
+      "권한-메뉴 매핑 모델 정리로 신규 병원 도입 리드타임 단축",
+      "포털 초기 로딩 최적화로 첫 화면 렌더링 개선",
+      "운영 로그 표준화로 장애 탐지 속도 향상",
+    ],
+    metrics: [
+      { label: "도입 병원", value: "12곳" },
+      { label: "첫 화면", value: "1.8s" },
+      { label: "운영 알림", value: "40%↑" },
+    ],
+    stack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "Nginx"],
+    status: "운영 중",
+  },
+
+
+  {
+    seq: 2,
     name: "MediGate 통합 포털",
     period: "2023 - 2024",
     company: "PLANITSQUARE Inc.",
@@ -35,6 +60,7 @@ const companyProjects: CompanyProject[] = [
     status: "운영 중",
   },
   {
+    seq: 3,
     name: "CareShift 근무/출퇴근",
     period: "2022 - 2023",
     company: "PLANITSQUARE Inc.",
@@ -55,6 +81,7 @@ const companyProjects: CompanyProject[] = [
     status: "운영 중",
   },
   {
+    seq: 4,
     name: "Insight 검사 리포트",
     period: "2021 - 2022",
     company: "PLANITSQUARE Inc.",
@@ -91,7 +118,10 @@ export function CompanyProjects() {
         </div>
 
         <div className="grid gap-4">
-          {companyProjects.map((project) => (
+          {companyProjects
+            .slice()
+            .sort((a, b) => a.seq - b.seq)
+            .map((project) => (
             <Card
               key={project.name}
               className="relative overflow-hidden border-primary/10 bg-card/90 p-5 md:p-6"

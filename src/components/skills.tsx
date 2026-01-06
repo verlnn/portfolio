@@ -16,7 +16,7 @@ const skillCategories = [
   },
   {
     category: "Currently Exploring",
-    skills: ["Python", "Flutter", "Dart", "Kafka"],
+    skills: ["Python", "Flutter", "Dart", "Kafka", "MSA", "DDD", "AWS"],
   }
 ]
 

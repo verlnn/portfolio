@@ -49,10 +49,6 @@ function PrimaryActions({
 }: Required<Pick<HeroProps, "onContact" | "onViewProjects">>) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
-      <Button size="lg" className="gap-2" onClick={onContact}>
-        <Mail className="w-5 h-5" />
-        연락하기
-      </Button>
       <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={onViewProjects}>
         실무 프로젝트 보기
         <ArrowDown className="w-5 h-5" />

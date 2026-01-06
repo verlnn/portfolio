@@ -155,11 +155,11 @@ export function CompanyProjects() {
 
                     <div className="space-y-1">
                       <p className="text-xs md:text-sm font-semibold text-foreground">핵심 작업</p>
-                      <ul className="grid gap-2 text-xs md:text-sm text-foreground/70 sm:grid-cols-2">
+                      <ul className="grid gap-2 text-sm text-foreground/70 lg:grid-cols-2">
                         {project.highlights.map((item) => (
                           <li key={item} className="flex items-start gap-2">
                             <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary/70" />
-                            <span>{item}</span>
+                            <span className="flex-1 min-w-0">{item}</span>
                           </li>
                         ))}
                       </ul>

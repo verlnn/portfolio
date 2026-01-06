@@ -126,3 +126,46 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 16mm 14mm;
+  }
+
+  :root {
+    --print-header-offset: 72px;
+  }
+
+  body {
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  main {
+    margin-top: var(--print-header-offset);
+  }
+
+  main > [data-pdf-section="true"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  main > [data-pdf-section="true"] + [data-pdf-section="true"] {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  [data-slot="card"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

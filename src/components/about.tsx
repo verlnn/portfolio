@@ -2,7 +2,7 @@ import { Card } from "./ui/card"
 
 export function About() {
   return (
-    <section id="about" data-pdf-section="true" className="py-20 px-4 scroll-mt-24">
+    <section id="about" data-pdf-section="true" className="print-section print-section-start py-20 px-4 scroll-mt-24">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
           <span className="text-primary">About</span> Me

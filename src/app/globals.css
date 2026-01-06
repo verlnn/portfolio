@@ -133,10 +133,6 @@
     margin: 16mm 14mm;
   }
 
-  :root {
-    --print-header-offset: 88px;
-  }
-
   body {
     background: #ffffff;
     -webkit-print-color-adjust: exact;
@@ -144,28 +140,12 @@
   }
 
   header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: static !important;
     background: var(--color-background);
   }
 
   main {
-    margin-top: var(--print-header-offset);
     display: block;
-  }
-
-  section[data-pdf-section="true"] {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    break-before: page;
-    page-break-before: always;
-  }
-
-  section[data-pdf-section="true"]:first-of-type {
-    break-before: auto;
-    page-break-before: auto;
   }
 
   [data-pdf-page-break="before"] {
@@ -178,12 +158,18 @@
     page-break-after: always;
   }
 
-  [data-slot="card"] {
+  .print-section-start {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .print-section {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  #experience {
+  .print-card,
+  [data-slot="card"] {
     break-inside: avoid;
     page-break-inside: avoid;
   }

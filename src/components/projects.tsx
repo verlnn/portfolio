@@ -187,7 +187,7 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
       ref={ref}
       id="projects"
       data-pdf-section="true"
-      className="py-20 px-4 scroll-mt-24"
+      className="print-section print-section-start py-20 px-4 scroll-mt-24"
       {...props}
     >
       <div className="max-w-6xl mx-auto">

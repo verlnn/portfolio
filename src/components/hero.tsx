@@ -156,7 +156,7 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 py-20 scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
 
       <div className="relative max-w-4xl mx-auto text-center space-y-8">

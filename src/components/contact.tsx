@@ -152,7 +152,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(function Contact(
   ]
 
   return (
-    <section ref={ref} id="contact" className="py-20 px-4" {...props}>
+    <section ref={ref} id="contact" className="py-20 px-4 scroll-mt-24" {...props}>
       <div className="max-w-6xl mx-auto">
         <ContactHeading />
 

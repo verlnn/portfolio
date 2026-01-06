@@ -73,45 +73,7 @@ function SocialButton({ label, icon, onClick }: SocialButtonConfig) {
   )
 }
 
-function ResumeDownloadButton({
-  open,
-  onOpenChange,
-  onConfirm,
-}: {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  onConfirm: () => void
-}) {
-  return (
-    <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="rounded-full"
-          aria-label="Resume"
-        >
-          <img src="/pdf.png" alt="PDF 다운로드" className="w-5 h-5 object-contain" />
-        </Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>이력서 다운로드</AlertDialogTitle>
-          <AlertDialogDescription>
-            김민수님의 이력서를 PDF로 다운로드 하시겠습니까?
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>취소</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>다운로드</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
-}
-
 export function Hero({ onViewProjects, onContact }: HeroProps) {
-  const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false)
 
   const safeOnViewProjects = onViewProjects ?? (() => {})
   const safeOnContact = onContact ?? (() => {})
@@ -128,19 +90,6 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
     )
   }
 
-  const handleMailClick = () => {
-    safeOnContact()
-  }
-
-  const handleResumeDownload = () => {
-    const link = document.createElement("a")
-    link.href = "/resume.pdf"
-    link.download = "resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    link.remove()
-    setIsResumeDialogOpen(false)
-  }
 
   const socialButtons: SocialButtonConfig[] = [
     {
@@ -168,11 +117,6 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
           {socialButtons.map((button) => (
             <SocialButton key={button.label} {...button} />
           ))}
-          <ResumeDownloadButton
-            open={isResumeDialogOpen}
-            onOpenChange={setIsResumeDialogOpen}
-            onConfirm={handleResumeDownload}
-          />
         </div>
       </div>
     </section>

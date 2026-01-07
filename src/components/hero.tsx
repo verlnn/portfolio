@@ -31,7 +31,7 @@ function HeroHeader() {
       <div className="mx-auto h-28 w-28 md:h-36 md:w-36 rounded-full border border-primary/20 bg-card/70 p-1 shadow-lg shadow-primary/10">
         <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/15 via-transparent to-accent/20 p-1">
           <img
-            src="/profile.png"
+            src="/profile.jpg"
             alt="김민수 프로필"
             className="h-full w-full rounded-full object-cover"
             loading="lazy"

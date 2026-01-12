@@ -27,6 +27,14 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "HeavenlyCoupon",
+    description: "대용량 실시간 쿠폰 발행을 위한 정합성과 안정성을 중심으로 설계한 아키텍처 실험 프로젝트",
+    image: "/coupon.png",
+    tags: ["Java", "Spring Boot", "Redis", "Kafka", "Docker"],
+    github: "https://github.com/verlnn/HeavenlyCoupon",
+    demo: "#",
+  },
+  {
     title: "UniPass",
     description: "UniHub, UniShift 솔루션을 하나의 계정으로 이용할 수 있도록 만든 통합 인증(SSO) 및 권한 관리 플랫폼입니다",
     image: "/UniPassLogo.jpeg",

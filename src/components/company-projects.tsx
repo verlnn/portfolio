@@ -35,13 +35,15 @@ const companyProjects: CompanyProject[] = [
       "IBM Watson Discovery 기반 병리 파싱 시스템을 정규식 기반 자체 파싱 엔진을 사용하는 시스템으로 대체하여 Hit율 97% 정확도 개선 및 CompletableFuture 활용한 병렬처리로 적재시간 개선",
       "다기관 의료 데이터 환경에서 DW 기반 ETL 파이프라인을 설계·운영하며 대용량 임상 데이터 적재 및 품질 관리 수행",
       "서울대병원을 포함한 다수의 상급종합병원·국립병원 환경에서 동일 솔루션을 전담 운영하며, 다기관 운영·관리 및 장애 대응을 책임진 프로젝트",
+      "병원 연구·진료 환경에서 발생하는 대용량 Freetext 데이터의 검색 성능 개선을 위한 Elasticsearch 기반 시스템 설계 및 운영",
+      "기존 Logstash 기반 적재 방식의 운영 한계를 개선하기 위하여 Elasticsearch 적재 전용 모듈 자체 개발"
     ],
     metrics: [
       { label: "다기관 병원", value: "12개" },
       { label: "대용량 임상 데이터", value: "DW·ETL" },
       { label: "운영·장애 대응", value: "전담 운영" },
     ],
-    stack: ["Java", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "DevExtreme", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
+    stack: ["Java", "Elasticsearch", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "DevExtreme", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
     status: "운영 중",
   },
   {

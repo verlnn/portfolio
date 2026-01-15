@@ -14,7 +14,7 @@ const experiences = [
     title: "백앤드 개발자",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     description: "백앤드, 프론트앤드, DB작업을 같이 병행하며 여러 병원들에서 주 솔루션들을 담당하였으며 운영 및 개발을 맡았습니다.",
-    tags: ["Java", "Spring Boot", "React", "Angular", "TypeScript", "Linux", "Nginx", "VERTICA", "PostgreSQL", "Etc..."],
+    tags: ["Java", "Spring Boot", "Elasticsearch", "React", "Angular", "TypeScript", "Linux", "Nginx", "VERTICA", "PostgreSQL", "Etc..."],
   },
   {
     period: "2022 - 2025",

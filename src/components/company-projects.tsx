@@ -36,7 +36,9 @@ const companyProjects: CompanyProject[] = [
       "다기관 의료 데이터 환경에서 DW 기반 ETL 파이프라인을 설계·운영하며 대용량 임상 데이터 적재 및 품질 관리 수행",
       "서울대병원을 포함한 다수의 상급종합병원·국립병원 환경에서 동일 솔루션을 전담 운영하며, 다기관 운영·관리 및 장애 대응을 책임진 프로젝트",
       "병원 연구·진료 환경에서 발생하는 대용량 Freetext 데이터의 검색 성능 개선을 위한 Elasticsearch 기반 시스템 설계 및 운영",
-      "기존 Logstash 기반 적재 방식의 운영 한계를 개선하기 위하여 Elasticsearch 적재 전용 모듈 자체 개발"
+      "기존 Logstash 기반 적재 방식의 운영 한계를 개선하기 위하여 Elasticsearch 적재 전용 모듈 자체 개발",
+      "Nginx 기반 Reverse Proxy 구조를 고려한 서버 구성 및 서비스 연결 구조 재설계하여 서버 이관 총괄",
+      "서버 이관에 맞춰 PostgreSQL 데이터베이스 이관 작업 단독 수행"
     ],
     metrics: [
       { label: "다기관 병원", value: "12개" },

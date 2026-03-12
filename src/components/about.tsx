@@ -24,7 +24,7 @@ export function About() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-          <Card className="p-8 md:p-10 bg-card/70 border-primary/10">
+          <Card className="p-8 md:p-10 bg-card/90 border-border/70">
             <h3 className="text-xl font-semibold mb-6">핵심 요약</h3>
             <ul className="space-y-4 text-sm md:text-base text-foreground/80">
               {summaryPoints.map((point) => (
@@ -39,7 +39,7 @@ export function About() {
             </div>
           </Card>
 
-          <Card className="p-0 bg-card/50 backdrop-blur border-primary/10">
+          <Card className="p-0 bg-card/90 backdrop-blur border-border/70">
             <div className="px-8 pt-8 md:px-10 md:pt-10">
               <h3 className="text-xl font-semibold">자기소개</h3>
             </div>

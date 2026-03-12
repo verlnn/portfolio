@@ -30,7 +30,7 @@ export function SectionNav() {
         </div>
         <nav
           aria-label="Section navigation"
-          className="flex w-full max-w-full items-center gap-1 overflow-x-auto rounded-full border border-border/70 bg-card/80 px-2 py-1 shadow-sm md:w-auto"
+          className="flex w-full max-w-full items-center gap-1 overflow-x-auto rounded-full border border-border/70 bg-card/90 px-2 py-1 shadow-[0_1px_2px_rgba(15,23,42,0.06)] md:w-auto"
         >
           {sections.map((section) => (
             <Button

@@ -51,7 +51,7 @@ function ContactHeading() {
 
 function ContactInfoList({ items }: { items: ContactInfoItem[] }) {
   return (
-    <Card className="p-8">
+    <Card className="p-8 bg-card/95">
       <h3 className="text-2xl font-bold mb-2">연락처 정보</h3>
       <p className="text-sm text-muted-foreground mb-6">
         함께 이야기 나눌 기회가 있다면 감사하겠습니다.
@@ -85,7 +85,7 @@ function ContactForm({
   onSubmit: (e: React.FormEvent) => void
 }) {
   return (
-    <Card className="p-8">
+    <Card className="p-8 bg-card/95">
       <h3 className="text-2xl font-bold mb-6">메시지 보내기</h3>
       <form onSubmit={onSubmit} className="space-y-4">
         {fields.map((field) =>

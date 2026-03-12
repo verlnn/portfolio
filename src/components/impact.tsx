@@ -45,7 +45,7 @@ export function Impact() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {impactCases.map((item) => (
-            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/80">
+            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/90">
               <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
               <div className="space-y-3 text-sm md:text-base">
                 <div>

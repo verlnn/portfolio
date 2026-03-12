@@ -41,7 +41,7 @@ export function Strengths() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {strengths.map((item) => (
-            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/80">
+            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/90">
               <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                 {item.description}

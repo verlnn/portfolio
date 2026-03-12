@@ -123,7 +123,7 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
             .map((project) => (
             <Card
               key={project.name}
-              className="relative overflow-hidden border-border/70 bg-card/90 p-6 md:p-8 shadow-sm"
+              className="relative overflow-hidden border-border/70 bg-card/95 p-6 md:p-8 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
             >
               <div className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
 

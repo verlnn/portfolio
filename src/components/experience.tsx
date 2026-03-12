@@ -50,7 +50,7 @@ export function Experience() {
 
         <div className="mb-10 grid gap-4 md:grid-cols-4">
           {summary.map((item) => (
-            <Card key={item.label} className="p-4 text-center border-border/70 bg-card/80">
+            <Card key={item.label} className="p-4 text-center border-border/70 bg-card/90">
               <p className="text-sm text-muted-foreground">{item.label}</p>
               <p className="text-lg font-semibold">{item.value}</p>
             </Card>

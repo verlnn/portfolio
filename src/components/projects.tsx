@@ -193,15 +193,23 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
   return (
     <section ref={ref} id="projects" className="py-20 px-4 scroll-mt-24" {...props}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-          <span className="text-primary">Featured</span> Projects
-        </h2>
+        <div className="text-center mb-12 space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Side Projects
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="text-primary">개인</span> 프로젝트
+          </h2>
+          <p className="text-muted-foreground">
+            실행력과 문제 해결 관점이 드러나는 프로젝트만 추렸습니다.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5"
+              className="overflow-hidden border-border/70 bg-card/90 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="relative h-60 bg-muted">
                 <img
@@ -214,10 +222,15 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
 
               <CardHeader>
                 <CardTitle className="text-xl">{project.title}</CardTitle>
-                <CardDescription className="line-clamp-2">{project.description}</CardDescription>
+                <CardDescription className="line-clamp-2">
+                  {project.description}
+                </CardDescription>
               </CardHeader>
 
               <CardContent className="space-y-4">
+                <div className="rounded-xl border border-border/70 bg-muted/40 p-3 text-xs text-muted-foreground">
+                  해결하려는 문제: {project.description}
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="secondary" className="text-xs">

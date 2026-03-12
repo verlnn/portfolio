@@ -5,9 +5,11 @@ import { CompanyProjects } from "./components/company-projects"
 import { Contact } from "./components/contact"
 import { Experience } from "./components/experience"
 import { Hero } from "./components/hero"
+import { Impact } from "./components/impact"
 import { Projects } from "./components/projects"
 import { SectionNav } from "./components/section-nav"
 import { Skills } from "./components/skills"
+import { Strengths } from "./components/strengths"
 import { useSectionScroll } from "./hooks/use-section-scroll"
 
 
@@ -19,8 +21,10 @@ function App() {
       <SectionNav />
       <Hero onViewProjects={scrollToProjects} onContact={scrollToContact} />
       <About />
+      <Strengths />
       <Experience />
       <CompanyProjects ref={projectsRef} />
+      <Impact />
       <Projects />
       <Skills />
       <Contact ref={contactRef} />

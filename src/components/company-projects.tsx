@@ -23,7 +23,7 @@ const companyProjects: CompanyProject[] = [
   {
     seq: 1,
     name: "서울대병원",
-    period: "2021 - ",
+    period: "2021 - 2026",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
         "서울대병원 의료·연구 솔루션 통합 포털 구축 프로젝트",
@@ -46,12 +46,12 @@ const companyProjects: CompanyProject[] = [
       { label: "운영·장애 대응", value: "전담 운영" },
     ],
     stack: ["Java", "Elasticsearch", "Spring Boot", "Spring Security", "Spring Batch", "React", "TypeScript", "DevExtreme", "PostgreSQL", "Oracle", "Vertica", "Nginx"],
-    status: "운영 중",
+    status: "구축 완료",
   },
   {
     seq: 2,
     name: "ResearchEx 2.5",
-    period: "2021 - ",
+    period: "2021 - 2026",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     summary:
         "CDW 기반 임상 데이터 연구검색 시스템 개발 및 운영",
@@ -68,7 +68,7 @@ const companyProjects: CompanyProject[] = [
       { label: "운영·장애 대응", value: "전담 운영" },
     ],
     stack: ["Java", "Spring Boot", "Spring Security", "DevExtreme", "Angular", "TypeScript", "Oracle", "MsSQL", "Tomcat9"],
-    status: "운영 중",
+    status: "구축 완료",
   },
   {
     seq: 3,
@@ -100,14 +100,20 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
     <section
       ref={ref}
       id="company-projects"
-      className="py-16 px-4 bg-muted/30 scroll-mt-24"
+      className="py-20 px-4 bg-muted/20 scroll-mt-24"
       {...props}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10 space-y-3">
-          <h2 className="text-3xl md:text-5xl font-bold">
-            <span className="text-primary">Company</span> Projects
+        <div className="text-center mb-12 space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Company Projects
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="text-primary">실무</span> 프로젝트
           </h2>
+          <p className="text-muted-foreground">
+            문제, 역할, 기술, 결과가 분명한 실무 프로젝트만 정리했습니다.
+          </p>
         </div>
 
         <div className="grid gap-4">
@@ -117,7 +123,7 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
             .map((project) => (
             <Card
               key={project.name}
-              className="relative overflow-hidden border-primary/10 bg-card/90 p-5 md:p-6"
+              className="relative overflow-hidden border-border/70 bg-card/90 p-6 md:p-8 shadow-sm"
             >
               <div className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
 
@@ -140,7 +146,7 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
                   {project.summary}
                 </p>
 
-                <div className="grid gap-4 md:grid-cols-[1.4fr_0.9fr]">
+                <div className="grid gap-6 md:grid-cols-[1.4fr_0.9fr]">
                   <div className="space-y-3">
                     <div className="space-y-1">
                       <p className="text-xs md:text-sm font-semibold text-foreground">담당 역할</p>

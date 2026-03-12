@@ -35,16 +35,27 @@ type ContactField = {
 
 function ContactHeading() {
   return (
-    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-      <span className="text-primary">Get</span> In Touch
-    </h2>
+    <div className="text-center mb-12 space-y-3">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        Contact
+      </p>
+      <h2 className="text-4xl md:text-5xl font-bold">
+        <span className="text-primary">연락</span> 하기
+      </h2>
+      <p className="text-muted-foreground">
+        협업과 운영을 함께 고민하는 백엔드 개발자로 기여하고 싶습니다.
+      </p>
+    </div>
   )
 }
 
 function ContactInfoList({ items }: { items: ContactInfoItem[] }) {
   return (
     <Card className="p-8">
-      <h3 className="text-2xl font-bold mb-6">연락처 정보</h3>
+      <h3 className="text-2xl font-bold mb-2">연락처 정보</h3>
+      <p className="text-sm text-muted-foreground mb-6">
+        함께 이야기 나눌 기회가 있다면 감사하겠습니다.
+      </p>
       <div className="space-y-6">
         {items.map((item) => (
           <div key={item.label} className="flex items-start gap-4">

@@ -26,9 +26,16 @@ type SocialButtonConfig = {
 }
 
 function HeroHeader() {
+  const highlights = [
+    "운영 안정성",
+    "데이터 파이프라인",
+    "성능 개선",
+    "협업 기반 문제 정의",
+  ]
+
   return (
-    <div className="space-y-4">
-      <div className="mx-auto h-28 w-28 md:h-36 md:w-36 rounded-full border border-primary/20 bg-card/70 p-1 shadow-lg shadow-primary/10">
+    <div className="space-y-6 text-center md:text-left">
+      <div className="mx-auto h-28 w-28 md:mx-0 md:h-36 md:w-36 rounded-full border border-primary/20 bg-card/70 p-1 shadow-lg shadow-primary/10">
         <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/15 via-transparent to-accent/20 p-1">
           <img
             src="/profile.jpg"
@@ -38,15 +45,30 @@ function HeroHeader() {
           />
         </div>
       </div>
-      <h1 className="text-5xl md:text-7xl font-bold text-balance">
-        <span className="text-primary">김민수</span>
-      </h1>
-      <p className="text-xl md:text-2xl text-muted-foreground text-balance">
-        4년간의 실무 경험으로 검증된 풀스택 병역특례 개발자
-      </p>
-      <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto text-pretty">
-        복잡한 비즈니스 문제를 우아한 코드로 해결하고, 사용자 경험과 성능을 동시에 고려한 서비스를 설계합니다
-      </p>
+      <div className="space-y-3">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Backend Engineer
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold text-balance">
+          <span className="text-primary">김민수</span>
+        </h1>
+        <p className="text-lg md:text-2xl text-foreground/90 text-balance">
+          운영 가능한 시스템을 설계하고, 문제를 구조적으로 해결합니다
+        </p>
+        <p className="text-sm md:text-base text-muted-foreground">
+          4년간의 실무 경험으로 검증된 풀스택 병역특례 개발자
+        </p>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start">
+        {highlights.map((item) => (
+          <span
+            key={item}
+            className="rounded-full border border-border/70 bg-card/80 px-3 py-1 text-xs font-medium text-muted-foreground"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
@@ -56,13 +78,13 @@ function PrimaryActions({
   onViewProjects,
 }: Required<Pick<HeroProps, "onContact" | "onViewProjects">>) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
       <Button size="lg" className="gap-2" onClick={onContact}>
         <Mail className="w-5 h-5" />
         연락하기
       </Button>
       <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={onViewProjects}>
-        실무 프로젝트 보기
+        회사 프로젝트 보기
         <ArrowDown className="w-5 h-5" />
       </Button>
     </div>
@@ -166,24 +188,43 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
   ]
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 py-20 scroll-mt-24">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+    <section id="home" className="relative overflow-hidden scroll-mt-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.12),_transparent_55%)]" />
+      <div className="absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="relative max-w-4xl mx-auto text-center space-y-8">
+      <div className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col items-center justify-center gap-10 px-4 py-20 md:flex-row md:items-center md:justify-between">
         <HeroHeader />
 
-        <PrimaryActions onContact={safeOnContact} onViewProjects={safeOnViewProjects} />
+        <div className="w-full max-w-md rounded-3xl border border-border/70 bg-card/90 p-6 shadow-sm backdrop-blur">
+          <div className="space-y-4">
+            <p className="text-sm font-semibold text-muted-foreground">Interview-ready summary</p>
+            <h2 className="text-2xl font-semibold text-foreground">
+              운영 안정성과 협업 기반 문제 해결에 강한 백엔드 개발자
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              실무 운영 환경에서의 장애 대응, 데이터 연계, 성능 개선 경험을 중심으로
+              신뢰감 있는 시스템을 설계합니다.
+            </p>
+            <PrimaryActions onContact={safeOnContact} onViewProjects={safeOnViewProjects} />
+          </div>
 
-        <div className="flex items-center justify-center gap-4 pt-8">
-          {socialButtons.map((button) => (
-            <SocialButton key={button.label} {...button} />
-          ))}
-          <ResumeDownloadButton
-            open={isResumeDialogOpen}
-            onOpenChange={setIsResumeDialogOpen}
-            onConfirm={handleResumeDownload}
-          />
+          <div className="flex items-center gap-3 pt-6">
+            {socialButtons.map((button) => (
+              <SocialButton key={button.label} {...button} />
+            ))}
+            <ResumeDownloadButton
+              open={isResumeDialogOpen}
+              onOpenChange={setIsResumeDialogOpen}
+              onConfirm={handleResumeDownload}
+            />
+          </div>
         </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-2 pb-8 text-xs text-muted-foreground">
+        <span className="h-px w-8 bg-border" />
+        Scroll for details
+        <span className="h-px w-8 bg-border" />
       </div>
     </section>
   )

@@ -1,10 +1,11 @@
 import { Card } from "./ui/card"
+import { ScrollArea } from "./ui/scroll-area"
 
 export function About() {
   const summaryPoints = [
-    "협업을 통해 문제를 구조적으로 해결하고, 운영까지 책임지는 백엔드 개발자",
-    "요구사항과 예외 케이스를 먼저 정리하고 테스트 코드와 API 명세를 기준으로 동작을 정의",
-    "변경 이력과 의도를 코드와 문서로 남기며, 운영 환경에서 관리 가능한 코드를 지향",
+    "운영 장애 상황에서 네트워크 우회 구조를 설계해 개발 중단 위기를 해결",
+    "데이터 처리 로직을 O(N×M)에서 O(N)으로 개선해 성능 병목을 해소",
+    "테스트 코드와 API 명세 기반 개발로 사이드 이펙트를 최소화",
   ]
 
   return (
@@ -18,7 +19,7 @@ export function About() {
             <span className="text-primary">자기소개</span> 요약
           </h2>
           <p className="text-muted-foreground">
-            일하는 방식과 운영 철학을 간결하게 정리했습니다.
+            문제 해결 방식과 운영 중심의 철학을 간결하게 정리했습니다.
           </p>
         </div>
 
@@ -34,31 +35,59 @@ export function About() {
               ))}
             </ul>
             <div className="mt-8 rounded-2xl border border-border/70 bg-muted/40 p-4 text-sm text-muted-foreground">
-              복잡한 비즈니스 문제를 우아한 코드로 해결하고, 사용자 경험과 성능을 동시에 고려한 서비스를 설계합니다.
+              단순히 동작하는 기능이 아니라, 운영 환경에서 안정적으로 관리 가능한 시스템을 만드는 백엔드 개발자를 지향합니다.
             </div>
           </Card>
 
-          <Card className="p-8 md:p-10 bg-card/50 backdrop-blur border-primary/10">
-            <div className="space-y-6 text-base md:text-lg leading-relaxed">
-              <p className="text-foreground/90">
-                <span className="block">안녕하세요.</span>
-                <span>협업을 통해 문제를 구조적으로 해결하고, 운영까지 책임지는 백엔드 개발자 김민수입니다.</span>
-              </p>
-              <p className="text-foreground/90">
-                저는 개인의 성과만큼이나 팀과 서비스 전체의 흐름을 안정적으로 유지하는 것이 중요하다고 생각합니다.
-                실제 업무에서는 동료 및 현업 사용자와의 협업 과정에서 문제의 원인을 함께 정리하고, 재발하지 않는 방향으로 해결책을 제시하는 역할을 주로 맡아왔습니다.
-                그 과정에서 “덕분에 문제를 빠르게 정리할 수 있었다”, “운영 관점에서 많이 도움이 됐다”는 피드백을 받을 때 가장 큰 보람을 느낍니다.
-              </p>
-              <p className="text-foreground/90">
-                개발에 있어서는 단기적인 해결보다 장기적인 안정성과 운영 효율을 우선합니다.
-                기능 구현에 앞서 요구사항과 예외 케이스를 먼저 정리하고, 테스트 코드와 API 명세를 기준으로 동작을 명확히 정의하는 방식을 선호합니다.
-                이를 통해 사이드 이펙트를 최소화하고, 이후 변경이나 확장이 발생하더라도 부담 없이 대응할 수 있는 구조를 만드는 것을 목표로 합니다.
-              </p>
-              <p className="text-foreground/90">
-                또한 단순히 “동작하는 코드”에 그치지 않고, 운영 환경에서 실제로 관리 가능한 코드를 만드는 데에 집중해 왔습니다.
-                변경 이력과 의도를 코드와 문서로 남기고, 기능별·상황별 테스트를 통해 시간이 지나도 쉽게 흔들리지 않는 시스템을 설계·개선해 나가고 있습니다.
-              </p>
+          <Card className="p-0 bg-card/50 backdrop-blur border-primary/10">
+            <div className="px-8 pt-8 md:px-10 md:pt-10">
+              <h3 className="text-xl font-semibold">자기소개</h3>
             </div>
+            <ScrollArea className="h-[360px] px-8 pb-8 md:h-[420px] md:px-10 md:pb-10">
+              <div className="space-y-6 text-base md:text-lg leading-relaxed">
+                <p className="text-foreground/90">
+                  수십억 건 규모의 의료 데이터를 다루는 환경에서 운영 장애를 해결하고
+                  서비스 개발 중단 위기를 복구한 경험이 있습니다.
+                </p>
+                <p className="text-foreground/90">
+                  신규 DB 접근을 위한 방화벽 요청 과정에서 커뮤니케이션 오류가 발생해 기존 개발 환경의 DB 접근 권한까지
+                  차단되는 문제가 발생했습니다. 이로 인해 개발자들이 DB에 접속할 수 없게 되었고 프로젝트 개발이 중단될 위험이 있었습니다.
+                </p>
+                <p className="text-foreground/90">
+                  문제를 해결하기 위해 기존 서비스용 서버를 활용하는 방향으로 접근했습니다. 해당 서버에 Nginx Reverse Proxy와 Stream
+                  모듈을 구성하여 DB 트래픽을 우회 연결하는 구조를 설계했고, 개발자들이 물리적으로 다른 자리로 이동하지 않고도 기존 환경에서
+                  DB에 접근할 수 있도록 복구했습니다.
+                </p>
+                <p className="text-foreground/90">
+                  그 결과 개발 중단 없이 프로젝트를 계속 진행할 수 있었으며, 운영 환경과 네트워크 구조를 함께 고려한 문제 해결 경험을
+                  얻을 수 있었습니다.
+                </p>
+                <p className="text-foreground/90">
+                  또한 프론트엔드 데이터 처리 로직에서 발생하던 성능 문제를 개선해 시간복잡도를 O(N×M)에서 O(N)으로 줄인 경험이 있습니다.
+                </p>
+                <p className="text-foreground/90">
+                  기존 코드에서는 이중 반복문과 find() 메서드가 결합된 구조로 인해 데이터 양이 많아질수록 브라우저 프리징이 발생했습니다.
+                  로직을 분석해 병목 지점을 확인한 뒤 검색 대상 데이터를 Set 자료구조로 변환하여 상수 시간 조회가 가능하도록 개선했습니다.
+                </p>
+                <p className="text-foreground/90">
+                  그 결과 브라우저 프리징 문제가 해결되었고, 자료구조 선택이 실제 서비스 성능에 미치는 영향을 실무에서 체감할 수 있었습니다.
+                </p>
+                <p className="text-foreground/90">
+                  실무에서는 Sybase, Vertica, PostgreSQL, Oracle, MS SQL Server 등 다양한 DB 환경을 다루며 최소 수천만 건에서 최대
+                  60억 건 규모의 데이터를 처리하는 시스템을 경험했습니다. 서울대병원 환경 기준으로 월 약 400~500명의 사용자가 접속하는
+                  서비스를 운영하며 데이터 조회, 연계, 처리 과정에서 안정적인 시스템 운영을 지원했습니다.
+                </p>
+                <p className="text-foreground/90">
+                  개발 과정에서는 기능 구현에 앞서 요구사항과 예외 케이스를 정리하고 API 명세와 테스트 코드를 기준으로 동작을 정의하는
+                  방식을 적용해 왔습니다. 이를 통해 기능 변경 시 영향 범위를 명확히 파악할 수 있었고, 기존 기능의 안정성을 유지하면서
+                  새로운 기능을 확장할 수 있었습니다.
+                </p>
+                <p className="text-foreground/90">
+                  앞으로도 데이터 처리, 시스템 구조 설계, 운영 환경을 함께 고려하는 백엔드 개발자로서 실제 운영 환경에서 안정적으로 동작하는
+                  시스템을 설계하고 개선하는 데 기여하고 싶습니다.
+                </p>
+              </div>
+            </ScrollArea>
           </Card>
         </div>
       </div>

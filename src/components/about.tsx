@@ -3,6 +3,8 @@ import { ScrollArea } from "./ui/scroll-area"
 
 export function About() {
   const summaryPoints = [
+    "Docker Compose 기반으로 웹·서버·DB를 분리하고, EC2 환경에서 실제 서비스 배포를 수행했으며, GitHub Actions와 Docker Hub를 활용한 CI/CD 자동 배포 파이프라인을 구축",
+    "Nginx 리버스 프록시와 Docker 기반 구조를 통해 트래픽 처리와 서비스 확장 가능성을 고려한 운영 아키텍처를 설계",
     "운영 장애 상황에서 네트워크 우회 구조를 설계해 개발 중단 위기를 해결",
     "데이터 처리 로직을 O(N×M)에서 O(N)으로 개선해 성능 병목을 해소",
     "테스트 코드와 API 명세 기반 개발로 사이드 이펙트를 최소화",

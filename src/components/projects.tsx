@@ -19,6 +19,7 @@ type GithubLink =
 type Project = {
   title: string
   description: string
+  problemToSolve?: string
   image?: string
   tags: string[]
   github?: GithubLink
@@ -26,6 +27,15 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    title: "멍냥마당",
+    description: "반려동물 기반 커뮤니티 · 산책 매칭 · 돌봄 플랫폼\n" +
+        "실제 운영을 목표로 설계된 Full-stack 서비스",
+    image: "petyard-logo.png",
+    tags: ["Docker", "Docker Compose", "Docker Hub", "AWS EC2", "Nginx", "CI/CD", "Java", "Spring Boot", "Spring Security", "JPA", "JWT", "PostgreSQL", "Next.js", "TypeScript", "TailwindCSS"],
+    github: "https://github.com/verlnn/pet-yard",
+    demo: "#",
+  },
   {
     title: "HeavenlyCoupon",
     description: "대용량 실시간 쿠폰 발행을 위한 정합성과 안정성을 중심으로 설계한 아키텍처 실험 프로젝트",
@@ -228,9 +238,11 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...
               </CardHeader>
 
               <CardContent className="space-y-4">
+{/*
                 <div className="rounded-xl border border-border/70 bg-muted/40 p-3 text-xs text-muted-foreground">
-                  해결하려는 문제: {project.description}
+                  해결하려는 문제: {project.problemToSolve}
                 </div>
+*/}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="secondary" className="text-xs">

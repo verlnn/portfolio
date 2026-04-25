@@ -4,7 +4,6 @@ import { Button } from "./ui/button"
 
 const sections = [
   { label: "Home", href: "#home" },
-  { label: "Summary", href: "#about" },
   { label: "Strengths", href: "#strengths" },
   { label: "Experience", href: "#experience" },
   { label: "Company Projects", href: "#company-projects" },

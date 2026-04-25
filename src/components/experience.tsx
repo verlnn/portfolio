@@ -3,25 +3,11 @@ import { Card } from "./ui/card"
 
 const experiences = [
   {
-    period: "2025 - ",
-    title: "대학교",
-    company: "한성대학교",
-    description: "선취업 후진학 제도를 이용하여 주경야독하고 있습니다.",
-    tags: ["선취업 후진학"],
-  },
-  {
     period: "2021 - 2026",
     title: "백앤드 개발자",
     company: "주식회사플랜잇스퀘어(PLANITSQUARE Inc.)",
     description: "백앤드, 프론트앤드, DB작업을 같이 병행하며 여러 병원들에서 주 솔루션들을 담당하였으며 운영 및 개발을 맡았습니다.",
     tags: ["Java", "Spring Boot", "Elasticsearch", "React", "Angular", "TypeScript", "Linux", "Nginx", "VERTICA", "PostgreSQL", "Etc..."],
-  },
-  {
-    period: "2022 - 2025",
-    title: "병역특례",
-    company: "Army",
-    description: "병역특례 제도를 이용하여 군전역 마쳤습니다.",
-    tags: ["산업기능요원", "병역특례"],
   },
 ]
 

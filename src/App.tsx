@@ -1,6 +1,5 @@
 import "./app/globals.css"
 
-import { About } from "./components/about"
 import { CompanyProjects } from "./components/company-projects"
 import { Contact } from "./components/contact"
 import { Experience } from "./components/experience"
@@ -25,7 +24,6 @@ function App() {
       </div>
       <SectionNav />
       <Hero onViewProjects={scrollToProjects} onContact={scrollToContact} />
-      <About />
       <Strengths />
       <Experience />
       <CompanyProjects ref={projectsRef} />

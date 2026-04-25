@@ -172,20 +172,14 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
     <section
       ref={ref}
       id="company-projects"
-      className="py-20 px-4 bg-muted/20 scroll-mt-24"
+      className="py-20 px-4 bg-background scroll-mt-24"
       {...props}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Company Projects
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-primary">실무</span> 프로젝트
-          </h2>
-          <p className="text-muted-foreground">
-            상황, 해결, 수치로 정리한 실무 프로젝트입니다.
-          </p>
+        <div className="mb-10 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Company Projects</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">실무 프로젝트</h2>
+          <p className="text-sm text-muted-foreground mt-1">상황, 해결, 수치로 정리한 실무 프로젝트입니다.</p>
         </div>
 
         <div className="grid gap-4">
@@ -195,10 +189,8 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
             .map((project) => (
             <Card
               key={project.name}
-              className="relative overflow-hidden border-border/70 bg-card/95 p-6 md:p-8 shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
+              className="border-border bg-card p-6 md:p-8 shadow-none"
             >
-              <div className="pointer-events-none absolute -top-24 right-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
-
               <div className="space-y-6">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="space-y-1">
@@ -207,7 +199,7 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
                   </div>
 
                   <div className="flex items-center gap-2 text-xs md:text-sm">
-                    <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
+                    <Badge variant="secondary" className="text-xs">
                       {project.status}
                     </Badge>
                     <span className="text-primary font-medium">{project.period}</span>
@@ -225,25 +217,35 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
 
                 <div className="space-y-3">
                   <p className="text-xs md:text-sm font-semibold text-foreground">핵심 작업</p>
-                  <div className="grid gap-3 md:grid-cols-2">
+                  <div className="space-y-3">
                     {project.highlights.map((item) => (
                       <div
                         key={item.title}
-                        className="rounded-xl border border-border/60 bg-muted/30 p-4 space-y-2"
+                        className="rounded-xl border border-border bg-muted/40 overflow-hidden"
                       >
-                        <p className="text-sm font-semibold text-foreground">{item.title}</p>
-                        <div className="space-y-1 text-xs text-foreground/70">
-                          <div className="flex items-start gap-2">
-                            <span className="mt-0.5 flex-shrink-0 rounded bg-yellow-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-yellow-600 dark:text-yellow-400">상황</span>
-                            <span className="flex-1">{item.situation}</span>
+                        {/* 제목 */}
+                        <div className="px-5 py-3 border-b border-border bg-muted/60">
+                          <p className="text-sm font-bold text-foreground">{item.title}</p>
+                        </div>
+                        {/* 상황 / 해결 / 수치 — 가로 3분할 */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
+                          <div className="px-5 py-4 space-y-1.5">
+                            <span className="inline-block text-[11px] font-bold tracking-wide text-yellow-700 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-full px-2 py-0.5">
+                              상황
+                            </span>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{item.situation}</p>
                           </div>
-                          <div className="flex items-start gap-2">
-                            <span className="mt-0.5 flex-shrink-0 rounded bg-blue-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-blue-600 dark:text-blue-400">해결</span>
-                            <span className="flex-1">{item.solution}</span>
+                          <div className="px-5 py-4 space-y-1.5">
+                            <span className="inline-block text-[11px] font-bold tracking-wide text-blue-700 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-full px-2 py-0.5">
+                              해결
+                            </span>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{item.solution}</p>
                           </div>
-                          <div className="flex items-start gap-2">
-                            <span className="mt-0.5 flex-shrink-0 rounded bg-green-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-green-600 dark:text-green-400">수치</span>
-                            <span className="flex-1">{item.outcome}</span>
+                          <div className="px-5 py-4 space-y-1.5">
+                            <span className="inline-block text-[11px] font-bold tracking-wide text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-full px-2 py-0.5">
+                              수치
+                            </span>
+                            <p className="text-sm font-medium text-foreground leading-relaxed">{item.outcome}</p>
                           </div>
                         </div>
                       </div>
@@ -252,26 +254,26 @@ export const CompanyProjects = forwardRef<HTMLElement, CompanyProjectsProps>((pr
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-xl border border-primary/10 bg-muted/40 p-3">
-                    <p className="text-xs md:text-sm font-semibold text-foreground">Impact</p>
-                    <div className="mt-2 grid grid-cols-3 gap-2 text-center">
+                  <div className="rounded-lg border border-border bg-muted p-4">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2">Impact</p>
+                    <div className="grid grid-cols-3 gap-2 text-center">
                       {project.metrics.map((metric) => (
-                        <div key={metric.label} className="rounded-lg bg-background/80 p-2">
-                          <p className="text-base font-bold text-foreground">{metric.value}</p>
-                          <p className="text-[11px] text-muted-foreground">{metric.label}</p>
+                        <div key={metric.label} className="rounded-md bg-card border border-border p-2">
+                          <p className="text-sm font-bold text-foreground">{metric.value}</p>
+                          <p className="text-[10px] text-muted-foreground mt-0.5">{metric.label}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-primary/10 bg-background/80 p-3">
-                    <p className="text-xs md:text-sm font-semibold text-foreground">Stack</p>
-                    <div className="mt-2 flex flex-wrap gap-2">
+                  <div className="rounded-lg border border-border bg-muted p-4">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2">Stack</p>
+                    <div className="flex flex-wrap gap-1.5">
                       {project.stack.map((tag) => (
                         <Badge
                           key={tag}
                           variant="secondary"
-                          className="bg-primary/10 text-primary text-[11px]"
+                          className="text-[11px] bg-card text-secondary-foreground border border-border"
                         >
                           {tag}
                         </Badge>

@@ -205,66 +205,69 @@ function ProjectActions({ github, demo }: { github?: GithubLink; demo?: string }
 
 export const Projects = forwardRef<HTMLElement, ProjectsProps>(({ className, ...props }, ref) => {
   return (
-    <section ref={ref} id="projects" className="py-20 px-4 scroll-mt-24" {...props}>
+    <section ref={ref} id="projects" className="py-20 px-4 bg-muted scroll-mt-24" {...props}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Side Projects
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-primary">개인</span> 프로젝트
-          </h2>
-          <p className="text-muted-foreground">
-            상황, 해결, 수치로 정리한 개인 프로젝트입니다.
-          </p>
+        <div className="mb-10 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Side Projects</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">개인 프로젝트</h2>
+          <p className="text-sm text-muted-foreground mt-1">상황, 해결, 수치로 정리한 개인 프로젝트입니다.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
-            <Card
+            <div
               key={index}
-              className="overflow-hidden border-border/70 bg-card/90 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+              className="rounded-xl border border-border bg-card overflow-hidden transition-colors hover:border-primary/40"
             >
-              <div className="relative h-48 bg-muted/60">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
+              {/* 썸네일 + 제목 헤더 */}
+              <div className="flex items-center gap-4 p-5 border-b border-border bg-muted/20">
+                <div className="h-12 w-12 flex-shrink-0 rounded-lg overflow-hidden border border-border bg-muted">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-bold text-foreground">{project.title}</h3>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-              </CardHeader>
-
-              <CardContent className="space-y-3">
-                <div className="space-y-2 text-xs">
-                  <div className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded bg-yellow-500/20 px-1.5 py-0.5 font-semibold text-yellow-600 dark:text-yellow-400">상황</span>
-                    <span className="text-foreground/70 leading-relaxed">{project.situation}</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded bg-blue-500/20 px-1.5 py-0.5 font-semibold text-blue-600 dark:text-blue-400">해결</span>
-                    <span className="text-foreground/70 leading-relaxed">{project.solution}</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0 rounded bg-green-500/20 px-1.5 py-0.5 font-semibold text-green-600 dark:text-green-400">수치</span>
-                    <span className="text-foreground/70 leading-relaxed">{project.outcome}</span>
-                  </div>
+              {/* 상황 / 해결 / 수치 — 가로 3분할 */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+                <div className="px-4 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-yellow-700 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-full px-2 py-0.5">
+                    상황
+                  </span>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{project.situation}</p>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
+                <div className="px-4 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-blue-700 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-full px-2 py-0.5">
+                    해결
+                  </span>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{project.solution}</p>
                 </div>
+                <div className="px-4 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-full px-2 py-0.5">
+                    수치
+                  </span>
+                  <p className="text-sm font-medium text-foreground leading-relaxed">{project.outcome}</p>
+                </div>
+              </div>
 
+              {/* 액션 버튼 */}
+              <div className="px-5 py-3 border-t border-border bg-muted/20">
                 <ProjectActions github={project.github} demo={project.demo} />
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>

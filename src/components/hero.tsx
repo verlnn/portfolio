@@ -25,128 +25,13 @@ type SocialButtonConfig = {
   onClick: () => void
 }
 
-function HeroHeader() {
-  const highlights = [
-    "운영 안정성",
-    "데이터 파이프라인",
-    "성능 개선",
-    "협업 기반 문제 정의",
-  ]
-
-  return (
-    <div className="space-y-6 text-center md:text-left">
-      <div className="mx-auto h-28 w-28 md:mx-0 md:h-36 md:w-36 rounded-full border border-primary/20 bg-card/70 p-1 shadow-lg shadow-primary/10">
-        <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/15 via-transparent to-accent/20 p-1">
-          <img
-            src="/profile.jpg"
-            alt="김민수 프로필"
-            className="h-full w-full rounded-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      </div>
-      <div className="space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          Backend Engineer
-        </p>
-        <h1 className="text-4xl md:text-6xl font-bold text-balance">
-          <span className="text-primary">김민수</span>
-        </h1>
-        <p className="text-lg md:text-2xl text-foreground/90 text-balance">
-          운영 가능한 시스템을 설계하고, 문제를 구조적으로 해결합니다
-        </p>
-        <p className="text-sm md:text-base text-muted-foreground">
-          4년간의 실무 경험으로 검증된 풀스택 병역특례 개발자
-        </p>
-      </div>
-      <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start">
-        {highlights.map((item) => (
-          <span
-            key={item}
-            className="rounded-full border border-border/70 bg-card/80 px-3 py-1 text-xs font-medium text-muted-foreground"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function PrimaryActions({
-  onContact,
-  onViewProjects,
-}: Required<Pick<HeroProps, "onContact" | "onViewProjects">>) {
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
-      <Button size="lg" className="gap-2" onClick={onContact}>
-        <Mail className="w-5 h-5" />
-        연락하기
-      </Button>
-      <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={onViewProjects}>
-        회사 프로젝트 보기
-        <ArrowDown className="w-5 h-5" />
-      </Button>
-    </div>
-  )
-}
-
-function SocialButton({ label, icon, onClick }: SocialButtonConfig) {
-  return (
-    <Button
-      size="icon"
-      variant="ghost"
-      className="rounded-full"
-      aria-label={label}
-      onClick={onClick}
-    >
-      {icon}
-    </Button>
-  )
-}
-
-function ResumeDownloadButton({
-  open,
-  onOpenChange,
-  onConfirm,
-}: {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  onConfirm: () => void
-}) {
-  return (
-    <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="rounded-full"
-          aria-label="Resume"
-        >
-          <img src="/pdf.png" alt="PDF 다운로드" className="w-5 h-5 object-contain" />
-        </Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>이력서 다운로드</AlertDialogTitle>
-          <AlertDialogDescription>
-            김민수님의 이력서를 PDF로 다운로드 하시겠습니까?
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>취소</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>다운로드</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
-}
-
 export function Hero({ onViewProjects, onContact }: HeroProps) {
   const [isResumeDialogOpen, setIsResumeDialogOpen] = useState(false)
 
   const safeOnViewProjects = onViewProjects ?? (() => {})
   const safeOnContact = onContact ?? (() => {})
+
+  const highlights = ["운영 안정성", "데이터 파이프라인", "성능 개선", "MSA 설계"]
 
   const handleGithubClick = () => {
     window.open("https://github.com/verlnn", "_blank", "noopener,noreferrer")
@@ -160,10 +45,6 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
     )
   }
 
-  const handleMailClick = () => {
-    safeOnContact()
-  }
-
   const handleResumeDownload = () => {
     const link = document.createElement("a")
     link.href = "/resume.pdf"
@@ -175,56 +56,123 @@ export function Hero({ onViewProjects, onContact }: HeroProps) {
   }
 
   const socialButtons: SocialButtonConfig[] = [
-    {
-      label: "GitHub",
-      icon: <Github className="w-5 h-5" />,
-      onClick: handleGithubClick,
-    },
+    { label: "GitHub", icon: <Github className="w-4 h-4" />, onClick: handleGithubClick },
     {
       label: "Wanted",
-      icon: <img src="/wanted_logo.png" alt="Wanted" className="w-5 h-5 object-contain" />,
+      icon: <img src="/wanted_logo.png" alt="Wanted" className="w-4 h-4 object-contain" />,
       onClick: handleWantedClick,
     },
   ]
 
   return (
-    <section id="home" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.12),_transparent_55%)]" />
-      <div className="absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+    <section id="home" className="scroll-mt-14">
+      <div className="mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center gap-12 px-4 py-20 md:flex-row md:items-center md:justify-between">
 
-      <div className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col items-center justify-center gap-10 px-4 py-20 md:flex-row md:items-center md:justify-between">
-        <HeroHeader />
-
-        <div className="w-full max-w-md rounded-3xl border border-border/70 bg-card/95 p-6 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur">
-          <div className="space-y-4">
-            <p className="text-sm font-semibold text-muted-foreground">Interview-ready summary</p>
-            <h2 className="text-2xl font-semibold text-foreground">
-              운영 안정성과 협업 기반 문제 해결에 강한 백엔드 개발자
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              실무 운영 환경에서의 장애 대응, 데이터 연계, 성능 개선 경험을 중심으로
-              신뢰감 있는 시스템을 설계합니다.
-            </p>
-            <PrimaryActions onContact={safeOnContact} onViewProjects={safeOnViewProjects} />
+        {/* Left: Identity */}
+        <div className="space-y-6 text-center md:text-left">
+          <div className="mx-auto md:mx-0 h-24 w-24 md:h-28 md:w-28 rounded-full overflow-hidden border border-border">
+            <img
+              src="/profile.jpg"
+              alt="김민수 프로필"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
 
-          <div className="flex items-center gap-3 pt-6">
-            {socialButtons.map((button) => (
-              <SocialButton key={button.label} {...button} />
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-muted-foreground">Backend Engineer</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              김민수
+            </h1>
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+              운영 가능한 시스템을 설계하고<br className="hidden md:block" />
+              문제를 구조적으로 해결합니다
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start">
+            {highlights.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground"
+              >
+                {item}
+              </span>
             ))}
-            <ResumeDownloadButton
-              open={isResumeDialogOpen}
-              onOpenChange={setIsResumeDialogOpen}
-              onConfirm={handleResumeDownload}
-            />
+          </div>
+        </div>
+
+        {/* Right: Summary card */}
+        <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-7 shadow-sm">
+          <div className="space-y-5">
+            <div className="space-y-1">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Interview-ready summary
+              </p>
+              <h2 className="text-xl font-bold text-foreground leading-snug">
+                운영 안정성과 협업 기반<br />문제 해결에 강한 백엔드 개발자
+              </h2>
+            </div>
+
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              4년 실무 경험 — 의료·금융 도메인에서 장애 대응, 성능 개선,
+              MSA 전환, Kafka 기반 모니터링까지 전 과정을 담당했습니다.
+            </p>
+
+            <div className="flex flex-col gap-2">
+              <Button className="w-full gap-2 h-10" onClick={safeOnContact}>
+                <Mail className="w-4 h-4" />
+                연락하기
+              </Button>
+              <Button variant="outline" className="w-full gap-2 h-10" onClick={safeOnViewProjects}>
+                프로젝트 보기
+                <ArrowDown className="w-4 h-4" />
+              </Button>
+            </div>
+
+            <div className="flex items-center gap-2 pt-1">
+              {socialButtons.map((btn) => (
+                <button
+                  key={btn.label}
+                  aria-label={btn.label}
+                  onClick={btn.onClick}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground cursor-pointer"
+                >
+                  {btn.icon}
+                </button>
+              ))}
+
+              <AlertDialog open={isResumeDialogOpen} onOpenChange={setIsResumeDialogOpen}>
+                <AlertDialogTrigger asChild>
+                  <button
+                    aria-label="Resume"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground cursor-pointer"
+                  >
+                    <img src="/pdf.png" alt="PDF" className="w-4 h-4 object-contain" />
+                  </button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>이력서 다운로드</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      김민수님의 이력서를 PDF로 다운로드 하시겠습니까?
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>취소</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleResumeDownload}>다운로드</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-2 pb-8 text-xs text-muted-foreground">
-        <span className="h-px w-8 bg-border" />
-        Scroll for details
-        <span className="h-px w-8 bg-border" />
+      <div className="flex items-center justify-center gap-3 pb-8 text-xs text-muted-foreground">
+        <span className="h-px w-10 bg-border" />
+        Scroll to explore
+        <span className="h-px w-10 bg-border" />
       </div>
     </section>
   )

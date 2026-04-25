@@ -25,25 +25,19 @@ const strengths = [
 
 export function Strengths() {
   return (
-    <section id="strengths" className="py-20 px-4 bg-muted/20 scroll-mt-24">
+    <section id="strengths" className="py-20 px-4 bg-muted scroll-mt-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Why Hire Me
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-primary">Core</span> Strengths
-          </h2>
-          <p className="text-muted-foreground">
-            프로젝트보다 먼저 확인해야 할, 실무 신뢰도를 만드는 핵심 역량입니다.
-          </p>
+        <div className="mb-10 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Why Hire Me</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Core Strengths</h2>
+          <p className="text-sm text-muted-foreground mt-1">프로젝트보다 먼저 확인해야 할, 실무 신뢰도를 만드는 핵심 역량입니다.</p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           {strengths.map((item) => (
-            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/90">
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            <Card key={item.title} className="p-6 bg-card border-border shadow-none">
+              <h3 className="text-base font-semibold mb-2 text-foreground">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {item.description}
               </p>
             </Card>

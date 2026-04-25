@@ -35,36 +35,30 @@ type ContactField = {
 
 function ContactHeading() {
   return (
-    <div className="text-center mb-12 space-y-3">
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-        Contact
-      </p>
-      <h2 className="text-4xl md:text-5xl font-bold">
-        <span className="text-primary">연락</span> 하기
-      </h2>
-      <p className="text-muted-foreground">
-        협업과 운영을 함께 고민하는 백엔드 개발자로 기여하고 싶습니다.
-      </p>
+    <div className="mb-10 space-y-1">
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Contact</p>
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground">연락하기</h2>
+      <p className="text-sm text-muted-foreground mt-1">협업과 운영을 함께 고민하는 백엔드 개발자로 기여하고 싶습니다.</p>
     </div>
   )
 }
 
 function ContactInfoList({ items }: { items: ContactInfoItem[] }) {
   return (
-    <Card className="p-8 bg-card/95">
-      <h3 className="text-2xl font-bold mb-2">연락처 정보</h3>
+    <Card className="p-7 bg-card border-border shadow-none">
+      <h3 className="text-base font-bold mb-1">연락처 정보</h3>
       <p className="text-sm text-muted-foreground mb-6">
         함께 이야기 나눌 기회가 있다면 감사하겠습니다.
       </p>
-      <div className="space-y-6">
+      <div className="space-y-5">
         {items.map((item) => (
-          <div key={item.label} className="flex items-start gap-4">
-            <div className="p-3 rounded-lg bg-primary/10">
+          <div key={item.label} className="flex items-center gap-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted">
               {item.icon}
             </div>
             <div>
-              <p className="font-medium">{item.label}</p>
-              <p className="text-muted-foreground">{item.value}</p>
+              <p className="text-xs text-muted-foreground">{item.label}</p>
+              <p className="text-sm font-medium text-foreground">{item.value}</p>
             </div>
           </div>
         ))}
@@ -85,8 +79,8 @@ function ContactForm({
   onSubmit: (e: React.FormEvent) => void
 }) {
   return (
-    <Card className="p-8 bg-card/95">
-      <h3 className="text-2xl font-bold mb-6">메시지 보내기</h3>
+    <Card className="p-7 bg-card border-border shadow-none">
+      <h3 className="text-base font-bold mb-5">메시지 보내기</h3>
       <form onSubmit={onSubmit} className="space-y-4">
         {fields.map((field) =>
           field.component === "input" ? (
@@ -163,7 +157,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(function Contact(
   ]
 
   return (
-    <section ref={ref} id="contact" className="py-20 px-4 scroll-mt-24" {...props}>
+    <section ref={ref} id="contact" className="py-20 px-4 bg-muted scroll-mt-24" {...props}>
       <div className="max-w-6xl mx-auto">
         <ContactHeading />
 

@@ -41,39 +41,41 @@ const impactCases = [
 
 export function Impact() {
   return (
-    <section id="impact" className="py-20 px-4 scroll-mt-24">
+    <section id="impact" className="py-20 px-4 bg-muted scroll-mt-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Problem Solving
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-primary">Engineering</span> Impact
-          </h2>
-          <p className="text-muted-foreground">
-            무엇을 만들었는지가 아니라, 어떤 문제를 어떻게 해결했는지 보여줍니다.
-          </p>
+        <div className="mb-10 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Problem Solving</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Engineering Impact</h2>
+          <p className="text-sm text-muted-foreground mt-1">무엇을 만들었는지가 아니라, 어떤 문제를 어떻게 해결했는지 보여줍니다.</p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-3">
           {impactCases.map((item) => (
-            <Card key={item.title} className="p-6 md:p-8 border-border/70 bg-card/90">
-              <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
-              <div className="space-y-3 text-sm md:text-base">
-                <div>
-                  <p className="text-xs font-semibold text-muted-foreground">상황</p>
-                  <p className="text-foreground/80">{item.problem}</p>
+            <div key={item.title} className="rounded-xl border border-border bg-card overflow-hidden">
+              <div className="px-5 py-3 border-b border-border bg-muted/40">
+                <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
+                <div className="px-5 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-yellow-700 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-full px-2 py-0.5">
+                    상황
+                  </span>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.problem}</p>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold text-muted-foreground">해결</p>
-                  <p className="text-foreground/80">{item.action}</p>
+                <div className="px-5 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-blue-700 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-full px-2 py-0.5">
+                    해결
+                  </span>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.action}</p>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold text-muted-foreground">수치</p>
-                  <p className="text-foreground/80">{item.result}</p>
+                <div className="px-5 py-4 space-y-1.5">
+                  <span className="inline-block text-[11px] font-bold tracking-wide text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-full px-2 py-0.5">
+                    수치
+                  </span>
+                  <p className="text-sm font-medium text-foreground leading-relaxed">{item.result}</p>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
